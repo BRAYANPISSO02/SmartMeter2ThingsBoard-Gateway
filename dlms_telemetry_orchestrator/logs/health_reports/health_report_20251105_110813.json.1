@@ -1,0 +1,75 @@
+{
+  "timestamp": "2025-11-05T11:08:13.107667",
+  "analysis_period_minutes": 60,
+  "overall_health": "CRITICAL",
+  "meters": {
+    "1": {
+      "name": "medidor_dlms_principal",
+      "ip": "192.168.1.127",
+      "port": 3333,
+      "status": "active",
+      "health": "HEALTHY",
+      "stats": {
+        "name": "medidor_dlms_principal",
+        "cycles": 19,
+        "success_rate": 100.0,
+        "mqtt_messages": 6,
+        "runtime": 582
+      },
+      "issues": []
+    },
+    "2": {
+      "name": "Medidor_DLMS_02",
+      "ip": "192.168.1.135",
+      "port": 3333,
+      "status": "active",
+      "health": "DOWN",
+      "stats": {
+        "name": "Medidor_DLMS_02",
+        "cycles": 0,
+        "success_rate": 0.0,
+        "mqtt_messages": 0,
+        "runtime": 582
+      },
+      "issues": [
+        {
+          "severity": "CRITICAL",
+          "category": "CONNECTION",
+          "issue": "Medidor sin conexión exitosa (0% success rate)",
+          "probable_causes": [
+            "Medidor nunca se conectó desde el inicio",
+            "IP o puerto incorrectos",
+            "Credenciales DLMS incorrectas",
+            "Medidor en modo de bajo consumo/sleep"
+          ],
+          "actions": [
+            "Verificar IP y puerto en configuración",
+            "Verificar credenciales DLMS (client_sap, server)",
+            "Probar conexión manual con dlms_reader.py",
+            "Verificar que medidor esté en modo operacional"
+          ]
+        }
+      ]
+    }
+  },
+  "system_errors": {
+    "read_failure": 244,
+    "connection_timeout": 234,
+    "hdlc_boundary": 86,
+    "hdlc_unterminated": 28,
+    "socket_closed": 56,
+    "hdlc_checksum": 60
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "action": "Verificar conectividad de red a medidores",
+      "reason": "Múltiples errores de socket cerrado detectados"
+    },
+    {
+      "priority": "HIGH",
+      "action": "Revisar configuración DLMS y calidad de comunicación",
+      "reason": "Errores HDLC frecuentes indican problemas de protocolo"
+    }
+  ]
+}

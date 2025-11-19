@@ -1,0 +1,83 @@
+{
+  "generated_at": "2025-11-10T09:36:06.247172",
+  "based_on_report": "2025-11-10T09:00:01.586256",
+  "system_health": "WARNING",
+  "immediate_actions": [
+    {
+      "priority": "CRITICAL",
+      "target": "Medidor 1 (medidor_dlms_principal)",
+      "action": "Restablecer conexión del medidor",
+      "steps": [
+        "1. Verificar que medidor en 192.168.1.127:3333 esté encendido",
+        "2. Probar conectividad: ping 192.168.1.127",
+        "3. Verificar puerto DLMS: nc -zv 192.168.1.127 3333",
+        "4. Revisar credenciales DLMS en base de datos",
+        "5. Intentar conexión manual: python3 -c \"from dlms_reader import DLMSClient; client = DLMSClient(...)\""
+      ],
+      "estimated_time": "15-30 minutos",
+      "impact": "Sin este medidor no hay telemetría para este dispositivo"
+    },
+    {
+      "priority": "CRITICAL",
+      "target": "Medidor 2 (Medidor_DLMS_02)",
+      "action": "Restablecer conexión del medidor",
+      "steps": [
+        "1. Verificar que medidor en 192.168.1.135:3333 esté encendido",
+        "2. Probar conectividad: ping 192.168.1.135",
+        "3. Verificar puerto DLMS: nc -zv 192.168.1.135 3333",
+        "4. Revisar credenciales DLMS en base de datos",
+        "5. Intentar conexión manual: python3 -c \"from dlms_reader import DLMSClient; client = DLMSClient(...)\""
+      ],
+      "estimated_time": "15-30 minutos",
+      "impact": "Sin este medidor no hay telemetría para este dispositivo"
+    }
+  ],
+  "short_term_actions": [],
+  "long_term_actions": [
+    {
+      "priority": "MEDIUM",
+      "action": "Implementar sistema de monitoreo continuo",
+      "description": "Configurar alertas automáticas basadas en métricas QoS",
+      "estimated_time": "1 día"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Optimizar configuración de polling",
+      "description": "Ajustar intervalos y timeouts basado en comportamiento real",
+      "estimated_time": "4 horas"
+    },
+    {
+      "priority": "LOW",
+      "action": "Documentar configuración óptima por modelo de medidor",
+      "description": "Crear guía de configuración para diferentes tipos de medidores",
+      "estimated_time": "2 días"
+    }
+  ],
+  "preventive_measures": [
+    {
+      "measure": "Health checks periódicos",
+      "description": "Ejecutar system_health_monitor.py cada hora via cron",
+      "implementation": "Agregar a crontab: 0 * * * * /path/to/system_health_monitor.py --save"
+    },
+    {
+      "measure": "Backup automático de configuración",
+      "description": "Respaldar base de datos diariamente",
+      "implementation": "Agregar script de backup a cron diario"
+    },
+    {
+      "measure": "Logs rotativos",
+      "description": "Implementar rotación de logs para evitar llenar disco",
+      "implementation": "Configurar logrotate para journald y logs de aplicación"
+    },
+    {
+      "measure": "Monitoreo de recursos",
+      "description": "Monitorear CPU, memoria y ancho de banda del servicio",
+      "implementation": "Implementar collectd o similar para métricas del sistema"
+    },
+    {
+      "measure": "Redundancia de conectividad",
+      "description": "Considerar conexión de respaldo (4G/5G) si red principal falla",
+      "implementation": "Evaluar router con failover automático"
+    }
+  ]
+}

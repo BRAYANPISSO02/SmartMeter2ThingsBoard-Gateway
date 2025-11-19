@@ -1,0 +1,55 @@
+{
+  "broker": {
+    "name": "Local Mosquitto Broker",
+    "host": "localhost",
+    "port": 1884,
+    "clientId": "ThingsBoard_Gateway_MQTT",
+    "security": {
+      "type": "anonymous"
+    }
+  },
+  "mapping": [
+    {
+      "topicFilter": "v1/devices/me/telemetry",
+      "converter": {
+        "type": "json",
+        "deviceNameJsonExpression": "${$.values.device_name}",
+        "deviceTypeJsonExpression": "DLMS_Meter",
+        "timeout": 60000,
+        "attributes": [],
+        "timeseries": [
+          {
+            "type": "double",
+            "key": "voltage_l1",
+            "value": "${$.values.voltage_l1}"
+          },
+          {
+            "type": "double",
+            "key": "current_l1",
+            "value": "${$.values.current_l1}"
+          },
+          {
+            "type": "double",
+            "key": "frequency",
+            "value": "${$.values.frequency}"
+          },
+          {
+            "type": "double",
+            "key": "active_power",
+            "value": "${$.values.active_power}"
+          },
+          {
+            "type": "double",
+            "key": "active_energy",
+            "value": "${$.values.active_energy}"
+          }
+        ]
+      }
+    }
+  ],
+  "connectRequests": [],
+  "disconnectRequests": [],
+  "attributeRequests": [],
+  "attributeUpdates": [],
+  "serverSideRpc": []
+}

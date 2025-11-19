@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "/home/pci/Documents/sebas_giraldo/Tesis-app/dlms-bridge/scripts/diagnose_meter2.py", line 82, in test_dlms_handshake
+    client = DLMSClient(
+             ^^^^^^^^^^^
+TypeError: DLMSClient.__init__() missing 1 required positional argument: 'max_info_length'
+================================================================================
+  DIAGNÓSTICO AVANZADO - MEDIDOR 2 (192.168.1.135:3333)
+================================================================================
+
+1️⃣  Probando conexión TCP a 192.168.1.135:3333...
+   ✅ Conexión TCP exitosa (10ms)
+
+2️⃣  Probando persistencia de conexión TCP (5.0s)...
+   ✅ Socket conectado
+   ✅ Socket sigue abierto después de 5.0s
+
+3️⃣  Probando handshake DLMS...
+   ❌ Error: DLMSClient.__init__() missing 1 required positional argument: 'max_info_length'
+
+4️⃣  Probando credenciales alternativas...
+   🔑 Probando: client_sap=16...
+      ❌ Falló: DLMSClient.__init__() missing 1 required positiona
+   🔑 Probando: server_logical=1...
+      ❌ Falló: DLMSClient.__init__() missing 1 required positiona
+   🔑 Probando: server_physical=0...
+      ❌ Falló: DLMSClient.__init__() missing 1 required positiona
+   🔑 Probando: password=00000000...
+      ❌ Falló: DLMSClient.__init__() missing 1 required positiona
+   🔑 Probando: sin password...
+      ❌ Falló: DLMSClient.__init__() missing 1 required positiona
+   ❌ Ninguna credencial alternativa funcionó
+
+5️⃣  Probando sensibilidad a delays...
+   ⏱️  Probando con delay de 0.0s...
+      ❌ Falló: DLMSClient.__init__() missing 1 required
+   ⏱️  Probando con delay de 0.5s...
+      ❌ Falló: DLMSClient.__init__() missing 1 required
+   ⏱️  Probando con delay de 1.0s...
+      ❌ Falló: DLMSClient.__init__() missing 1 required
+   ⏱️  Probando con delay de 2.0s...
+      ❌ Falló: DLMSClient.__init__() missing 1 required
+
+================================================================================
+  DIAGNÓSTICO FINAL
+================================================================================
+
+❌ No se pudo establecer comunicación DLMS con el medidor
+
+Causas probables:
+   1. Medidor requiere credenciales específicas no probadas
+   2. Medidor en modo incompatible (diferente a Meter 1)
+   3. Problema de firmware en el medidor
+   4. Medidor siendo accedido por otro sistema
+   5. Medidor requiere configuración especial previa
+
+Próximos pasos:
+   • Consultar manual del medidor para credenciales correctas
+   • Verificar si hay software propietario conectado
+   • Considerar reset de fábrica del medidor
+   • Contactar fabricante para soporte técnico
+
+================================================================================
