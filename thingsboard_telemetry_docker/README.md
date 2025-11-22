@@ -2,11 +2,11 @@
 
 ## 📋 Información del Proyecto
 
-**Institución:** [Universidad Nacional de Colombia]  
-**Programa:** [Pregrado en Ingeniería Electrónica]  
-**Proyecto:** [SmartMeter2ThingsBoard.Gateway]  
-**Autor(es):** [Brayan Ricardo Pisso Ramírez]  
-**Director:** [Gustavo Adolfo Osorio Londoño]  
+**Institución:** Universidad Nacional de Colombia  
+**Programa:** Pregrado en Ingeniería Electrónica  
+**Proyecto:** SmartMeter2ThingsBoard.Gateway  
+**Autor(es):** Brayan Ricardo Pisso Ramírez  
+**Director:** Gustavo Adolfo Osorio Londoño  
 **Año:** 2025
 
 ---
